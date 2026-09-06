@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>황소영 디지털 명함</title>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode_UTF8.js"></script>
+<style>
+  :root{
+    --lime: #7CB518;
+    --lemon: #C9E265;
+    --lime-dark: #4C7A0A;
+    --ink: #1F2A12;
+    --sub: #5B6650;
+    --bg: #F6FAEC;
+    --card-bg: #FFFFFF;
+    --line: #E4EDD3;
+  }
+  *{ box-sizing: border-box; }
+  html, body{
+    margin:0; padding:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  }
+  body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 20px;
+  }
+  .card{
+    width:100%;
+    max-width: 420px;
+    background: var(--card-bg);
+    border-radius: 28px;
+    box-shadow: 0 12px 40px rgba(76,122,10,0.16);
+    overflow:hidden;
+    border: 1px solid var(--line);
+  }
+  .top-bar{
+    height: 10px;
+    background: linear-gradient(90deg, var(--lime), var(--lemon));
+  }
+  .content{
+    padding: 32px 26px 26px;
+    text-align:center;
+  }
+  .name{
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin: 0 0 6px;
+    color: var(--ink);
+  }
+  .title{
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--lime-dark);
+    margin: 0 0 14px;
+    line-height:1.4;
+  }
+  .highlight{
+    display:inline-block;
+    background: linear-gradient(90deg, var(--lime), var(--lemon));
+    color: #1F2A12;
+    font-weight: 800;
+    font-size: 15px;
+    padding: 7px 18px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .sub{
+    font-size: 12.5px;
+    color: var(--sub);
+    margin: 0 0 18px;
+  }
+  .services{
+    list-style:none;
+    padding:0; margin: 0 0 24px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap: 8px;
+  }
+  .services li{
+    font-size: 12.5px;
+    font-weight:600;
+    color: var(--lime-dark);
+    background: #F1F8E2;
+    border: 1px solid var(--line);
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+  .qr-wrap{
+    background: #FBFDF6;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 18px;
+  }
+  .qr-wrap #qrcode{
+    display:flex;
+    justify-content:center;
+  }
+  .qr-wrap #qrcode svg{
+    width: 100%;
+    height: auto;
+    max-width: 240px;
+    display:block;
+  }
+  .qr-caption{
+    font-size: 11.5px;
+    color: var(--sub);
+    margin-top: 10px;
+  }
+  .contact-text{
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .contact-text .row{
+    display:block;
+  }
+  .contact-text b{ color: var(--lime-dark); }
+  .buttons{
+    display:flex;
+    gap: 10px;
+  }
+  .btn{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    padding: 15px 10px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 800;
+    text-decoration:none;
+    border: none;
+  }
+  .btn-primary{
+    background: linear-gradient(90deg, var(--lime), var(--lemon));
+    color: #17240A;
+  }
+  .btn-outline{
+    background: #fff;
+    color: var(--lime-dark);
+    border: 2px solid var(--lime);
+  }
+  .addr{
+    margin-top: 16px;
+    font-size: 11.5px;
+    color: var(--sub);
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="top-bar"></div>
+    <div class="content">
+      <div class="name">황소영</div>
+      <div class="title">충청남도서부장애인종합복지관<br>ID&amp;R지원단 · 선임작업치료사</div>
+      <div class="highlight">작업치료 · 인지재활 · 감각통합</div>
+      <div class="sub">장애인 재활 및 지역사회 통합지원 전문</div>
+
+      <ul class="services">
+        <li>작업활동</li>
+        <li>감각통합</li>
+      </ul>
+
+      <div class="qr-wrap">
+        <div id="qrcode"></div>
+        <div class="qr-caption">QR을 스캔하면 연락처가 저장됩니다</div>
+      </div>
+
+      <div class="contact-text">
+        <span class="row"><b>황소영</b></span>
+        <span class="row">전화 010-4299-4014</span>
+        <span class="row">이메일 syoung_@nate.com</span>
+        <span class="row">웹 westrc.or.kr</span>
+      </div>
+
+      <div class="buttons">
+        <a class="btn btn-primary" href="tel:010-4299-4014">📞 전화 걸기</a>
+        <a class="btn btn-outline" href="mailto:syoung_@nate.com">✉️ 이메일 보내기</a>
+      </div>
+
+      <div class="addr">충남 보령시 주교면 보령북로 404</div>
+    </div>
+  </div>
+
+<script>
+  var vcard =
+    "BEGIN:VCARD\r\n" +
+    "VERSION:3.0\r\n" +
+    "N:황소영;;;;\r\n" +
+    "FN:황소영\r\n" +
+    "ORG:충청남도서부장애인종합복지관;ID&R지원단\r\n" +
+    "TITLE:선임작업치료사\r\n" +
+    "TEL;TYPE=CELL,VOICE:010-4299-4014\r\n" +
+    "EMAIL;TYPE=INTERNET:syoung_@nate.com\r\n" +
+    "URL:http://westrc.or.kr\r\n" +
+    "ADR;TYPE=WORK:;;충남 보령시 주교면 보령북로 404;;;;\r\n" +
+    "NOTE:주요 분야: 작업활동, 감각통합\r\n" +
+    "END:VCARD\r\n";
+
+  var qr = null;
+  for (var t = 1; t <= 40; t++) {
+    try {
+      var candidate = qrcode(t, 'M');
+      candidate.addData(vcard);
+      candidate.make();
+      qr = candidate;
+      break;
+    } catch (e) { /* try next size */ }
+  }
+  if (qr) {
+    document.getElementById('qrcode').innerHTML = qr.createSvgTag({ cellSize: 4, margin: 4, scalable: true });
+  }
+</script>
+
+</body>
+</html>
